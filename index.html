@@ -9,7 +9,7 @@
 "></script>
 	<script type="text/javascript" src="http://lod4all.net/api/lfasparql-2.0.0.js"></script>
 	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="js/jqueryballoon.min.js"></script>
+	<script type="text/javascript" src="js/jquery.balloon.min.js"></script>
 	<script type="text/javascript" src="js/kansaiObachan.js"></script>
 	
 </head>
@@ -20,15 +20,25 @@
 			<button type="submit">話す</button>
 		</form>
 		<br />
-		{{ query1 }}
+		<div id="abstract" style="width:100px; height:50px">
+		</div>	
 		<hr />
-		 {{ molecularWeight }}
+		<div id="molecular" style="width:100px; height:50px">
+		</div>	
 		<hr />
-		<img height="300px" ng-hide="!imageUrl" ng-src="{{ imageUrl }}"></img>
+		<div>
+			
+		</div>
+		<div id="picture" stype="width:200px; height:200px; position: relative;">
+			<img src="./image/balloon-sample1.png" style="height: 320px;">
+			<div style="position: absolute; bottom: 0px;"><img height="300px" ng-hide="!imageUrl" ng-src="{{ imageUrl }}"></img>
+		</div>
 		<hr />
-		<p ng-hide="dispLists" ng-init="dispLists=true;">こんなんが関連ありそうやな。</p>
-		<ul>
-			<li ng-repeat="list in refLists">{{list.item}}</li>
-		</ul>
+		<div>
+			<p ng-hide="dispLists" ng-init="dispLists=true;">こんなんが関連ありそうやな。</p>
+			<ul>
+				<li ng-repeat="list in refLists">{{list.item}}</li>
+			</ul>
+		</div>
 </body>
 </html>

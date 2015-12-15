@@ -45,11 +45,17 @@
 				
 				if(data.length > 0) {
 					$scope.imageUrl=data[0].image.value;
-					$scope.molecularWeight="分子量は " + data[0].weight.value + " や！";
+					// $scope.molecularWeight="分子量は " + data[0].weight.value + " や！";
+					$("#molecular").showBalloon({
+						contents: "分子量は " + data[0].weight.value + " や！",
+						position: "right"
+					});
 				} else {
 					$scope.imageUrl=false;
 				}
 				$scope.$apply();
+				
+
 			}
 			
 			function getResult2(data) {
@@ -58,7 +64,12 @@
 				$scope.refLists = [];
 				if (data.length>0) {
 					$scope.dispLists=false;
-					$scope.query1=osakaDecode(data[0].abstract.value);
+					// $scope.query1=osakaDecode(data[0].abstract.value);
+					$("#abstract").showBalloon({
+						contents: osakaDecode(data[0].abstract.value),
+						position: "right",
+						offsetY: "-25"
+					});
 					data.forEach(function(val) {
 						$scope.refLists.push({ item: val.label.value});
 					});
