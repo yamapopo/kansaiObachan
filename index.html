@@ -1,0 +1,35 @@
+
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js
+"></script>
+	<script type="text/javascript" src="http://lod4all.net/api/lfasparql-2.0.0.js"></script>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/jqueryballoon.min.js"></script>
+	<script type="text/javascript" src="js/kansaiObachan.js"></script>
+	
+</head>
+  <body>
+    <div class="container" ng-app="myApp" ng-controller="MainController">
+		<form ng-submit="getData()">
+			<input type="text" ng-model="searchText" ng-init='searchText="アセトフェノン"'>
+			<button type="submit">話す</button>
+		</form>
+		<br />
+		{{ query1 }}
+		<hr />
+		 {{ molecularWeight }}
+		<hr />
+		<img height="300px" ng-hide="!imageUrl" ng-src="{{ imageUrl }}"></img>
+		<hr />
+		<p ng-hide="dispLists" ng-init="dispLists=true;">こんなんが関連ありそうやな。</p>
+		<ul>
+			<li ng-repeat="list in refLists">{{list.item}}</li>
+		</ul>
+</body>
+</html>
