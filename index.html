@@ -11,7 +11,7 @@
   <title>ホーム</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/site_global.css?4052507572"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?484861725" id="pagesheet"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?173399195" id="pagesheet"/>
   <!-- Other scripts -->
   <script type="text/javascript">
    document.documentElement.className += ' js';
@@ -54,11 +54,20 @@
 <img ng-hide="!imageUrl" ng-src="{{ imageUrl }}" alt="イメージ">
 </div>
 </div>
-    <div class="colelem" id="u109"><!-- custom html -->
-     <div id="molecularWeight">
+    <div class="clearfix colelem" id="pu109"><!-- group -->
+     <div class="grpelem" id="u109"><!-- custom html -->
+      <div id="molecularWeight">
 <span>{{ molecularWeight }}</span>
 </div>
 </div>
+     <div class="grpelem" id="u123"><!-- custom html -->
+      <div id="drugWeight">
+ <span>{{ drugWeight }}</span>
+ </div>
+
+
+</div>
+    </div>
     <img class="colelem" id="u114-4" alt="こんなん関係ありそうやな！" width="286" height="28" src="images/u114-4.png"/><!-- rasterized frame -->
     <div class="colelem" id="u111"><!-- custom html -->
      <div id="listDiv">
@@ -68,6 +77,35 @@
 </div>
 </div>
    </div>
+   <div class="grpelem" id="u117"><!-- custom html -->
+    <div id="listDrugs" ng-controller="DrugListController" ng-init="getList()">
+<!-- くすり -->
+  <select ng-model="drugListModel" ng-options="drug.url as drug.name for drug in drugs" ng-init="drugListModel=0" ng-change="getData()"></select>
+</div>
+
+</div>
+   <div class="grpelem" id="u119"><!-- custom html -->
+     <div id="drugAbstract">
+ <span>{{ drugAbstract }}</span>
+ </div>
+
+</div>
+   <div class="grpelem" id="u121"><!-- custom html -->
+     <div id="drugImage">
+ <span><img ng-hide="!drugImageUrl" ng-src="{{ drugImageUrl }}" alt="薬イメージ"></span>
+ </div>
+
+</div>
+   <div class="grpelem" id="u125"><!-- custom html -->
+     <div id="drugRef">
+ こんなん関係ありそうやな！
+ <span><ul>
+<li ng-repeat="item in drugRefLists">{{ item.item }}</li>
+</ul>
+</span>
+ </div>
+
+</div>
    <div class="verticalspacer"></div>
   </div>
   <!-- JS includes -->
