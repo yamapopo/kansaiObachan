@@ -1,0 +1,166 @@
+.version.index /* version checker */
+{
+	color: #00001C;
+	background-color: #E6671D;
+}
+
+.html
+{
+	background-color: #FFFFFF;
+}
+
+#page
+{
+	z-index: 1;
+	width: 1200px;
+	min-height: 438px;
+	background-image: none;
+	border-style: none;
+	border-color: #000000;
+	background-color: transparent;
+	padding-bottom: 62px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#u95
+{
+	z-index: 2;
+	width: 559px;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 797px;
+	left: 562px;
+}
+
+#u97
+{
+	z-index: 3;
+	width: 635px;
+	height: 122px;
+	margin-bottom: -12px;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 10px;
+	left: -47px;
+}
+
+.ie #u97
+{
+	background-color: #FFFFFF;
+	opacity: 0.01;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+	filter: alpha(opacity=1);
+}
+
+#u81
+{
+	z-index: 4;
+	width: 1228px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #F200F0;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: -1px;
+	left: -29px;
+}
+
+#u113
+{
+	z-index: 6;
+	width: 599px;
+	border-width: 4px;
+	border-style: solid;
+	border-color: #FF0695;
+	background-color: transparent;
+	position: relative;
+	margin-right: -10000px;
+	margin-top: 730px;
+	left: 489px;
+	padding: 15px 36px 10.170728073128657px 14px;
+}
+
+#u102
+{
+	z-index: 7;
+	width: 252px;
+	min-height: 41px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	position: relative;
+}
+
+#u105
+{
+	z-index: 8;
+	width: 599px;
+	min-height: 100px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	margin-top: 7px;
+	position: relative;
+}
+
+#u107
+{
+	z-index: 9;
+	width: 299px;
+	min-height: 215px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	margin-top: 24px;
+	position: relative;
+}
+
+#u109
+{
+	z-index: 10;
+	width: 200px;
+	min-height: 31px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	margin-top: 16px;
+	position: relative;
+}
+
+#u114-4
+{
+	z-index: 12;
+	display: block;
+	vertical-align: top;
+	margin-top: 15px;
+	position: relative;
+}
+
+#u111
+{
+	z-index: 11;
+	width: 377px;
+	min-height: 156px;
+	border-style: none;
+	border-color: transparent;
+	background-color: transparent;
+	margin-top: 3px;
+	position: relative;
+}
+
+body
+{
+	position: relative;
+	min-width: 1200px;
+	padding-top: 36px;
+	padding-bottom: 36px;
+}
+
+#page .verticalspacer
+{
+	clear: both;
+}
+

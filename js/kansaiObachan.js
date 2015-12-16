@@ -1,5 +1,5 @@
 		var app = angular.module('myApp',[]);
-		app.controller("MainController", ["$scope", "$http", function($scope, $http){		
+		app.controller("MainController", ["$scope", "$rootScope", function($scope, $rootScope){		
 			$scope.getData = function () {
 				$scope.results=[];
 				console.log("TEST");
@@ -35,47 +35,41 @@
 					sparql: sparql_query2,
 					success: getResult2,
 					error: getError
-				})
+				});
+				
 			}
 		
 			function getResult(data) {
 				console.log(data);
-				$scope.imageUrl="";
-				$scope.molecularWeight="";
+				$rootScope.imageUrl="";
+				$rootScope.molecularWeight="";
 				
 				if(data.length > 0) {
-					$scope.imageUrl=data[0].image.value;
-					// $scope.molecularWeight="分子量は " + data[0].weight.value + " や！";
-					$("#molecular").showBalloon({
-						contents: "分子量は " + data[0].weight.value + " や！",
-						position: "right"
-					});
+					$rootScope.imageUrl=data[0].image.value;
+					$rootScope.molecularWeight="分子量は " + data[0].weight.value + " や！";
 				} else {
 					$scope.imageUrl=false;
 				}
 				$scope.$apply();
-				
-
 			}
 			
 			function getResult2(data) {
 				console.log(data);
-				$scope.query1="そんなん知らんわ！";
-				$scope.refLists = [];
+				$rootScope.abstract="そんなん知らんわ！"
+				$rootScope.refLists = [];
 				if (data.length>0) {
-					$scope.dispLists=false;
-					// $scope.query1=osakaDecode(data[0].abstract.value);
-					$("#abstract").showBalloon({
-						contents: osakaDecode(data[0].abstract.value),
-						position: "right",
-						offsetY: "-25"
-					});
+//					$scope.dispLists=false;
+					$rootScope.abstract = osakaDecode(data[0].abstract.value);
 					data.forEach(function(val) {
-						$scope.refLists.push({ item: val.label.value});
+						$rootScope.refLists.push({ item: val.label.value});
 					});
 				} else {
-					$scope.dispLists=true;
+//					$scope.dispLists=true;
+					data.forEach(function(val) {
+						$rootScope.refLists.push({ item: val.label.value});
+					});				
 				}
+
 				$scope.$apply();
 			}
 		}]);
