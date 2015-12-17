@@ -5,11 +5,13 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 	
 		var sparql_query = ' SELECT distinct * WHERE { '
 			+ ' graph <http://ja.dbpedia.org/> { '
-			+ ' ?subject dct:subject <http://ja.dbpedia.org/resource/Category:一般用医薬品> . '
+    		+ ' {{ ?subject dct:subject <http://ja.dbpedia.org/resource/Category:一般用医薬品> . } '
+    		+ ' union '
+    		+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:医薬品> . }} '
 			+ ' ?subject rdfs:label ?name . '
 			+ ' } '
 			+ ' } '
-			+ ' limit 100 '
+			+ ' limit 300 '
 	
 		console.log(sparql_query);
 		lfasparql.executeSparql({
