@@ -9,7 +9,6 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 			+ ' ?subject rdfs:label ?name . '
 			+ ' } '
 			+ ' } '
-			+ ' order by rand() '
 			+ ' limit 50 '
 	
 		console.log(sparql_query);
