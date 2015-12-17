@@ -9,7 +9,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 			+ ' ?subject rdfs:label ?name . '
 			+ ' } '
 			+ ' } '
-			+ ' limit 50 '
+			+ ' limit 100 '
 	
 		console.log(sparql_query);
 		lfasparql.executeSparql({
