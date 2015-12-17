@@ -11,7 +11,7 @@
   <title>ホーム</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/site_global.css?4052507572"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?4070370043" id="pagesheet"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?3937529244" id="pagesheet"/>
   <!-- Other scripts -->
   <script type="text/javascript">
    document.documentElement.className += ' js';
@@ -41,7 +41,16 @@
   <select ng-model="drugListModel" ng-options="drug.url as drug.name for drug in drugs" ng-init="drugListModel=0" ng-change="getData()"></select>
 </div>
 
+<!-- 食品 -->
+<div id="listFood" ng-controller="DrugListController" ng-init="getFoodList()">
+    <select ng-model="drugListModel" ng-options="food.url as food.name for food in foods" ng-init="drugListModel=0" ng-change="getData()"></select>
 </div>
+
+<!-- その他 -->
+<div id="listGrocery" ng-controller="DrugListController" ng-init="getGroceryList()">
+    <select ng-model="drugListModel" ng-options="grocery.url as grocery.name for grocery in groceries" ng-init="drugListModel=0" ng-change="getData()"></select>
+</div>
+
    <div class="grpelem" id="u119"><!-- custom html -->
     <div id="drugAbstract">
 <span>{{ drugAbstract }}</span>
@@ -74,20 +83,6 @@
 <span  ng-controller="DrugListController" ng-click="getData(orgSource);" ng-if="orgSource && orgSource!=targetSource" style='cursor: pointer'>最初に戻る</span>
 </div>
 </div>
-   <div class="grpelem" id="u129"><!-- custom html -->
-    <!-- 食品 -->
-<div id="listFood" ng-controller="DrugListController" ng-init="getFoodList()">
-    <select ng-model="drugListModel" ng-options="food.url as food.name for food in foods" ng-init="drugListModel=0" ng-change="getData()"></select>
-</div>
-
-</div>
-   <div class="grpelem" id="u131"><!-- custom html -->
-    <!-- その他 -->
-<div id="listGrocery" ng-controller="DrugListController" ng-init="getGroceryList()">
-    <select ng-model="drugListModel" ng-options="grocery.url as grocery.name for grocery in groceries" ng-init="drugListModel=0" ng-change="getData()"></select>
-</div>
-
-</div>
    <div class="verticalspacer"></div>
   </div>
   <!-- JS includes -->
@@ -104,7 +99,8 @@
    $(document).ready(function() { try {
 (function(){var a={},b=function(a){if(a.match(/^rgb/))return a=a.replace(/\s+/g,"").match(/([\d\,]+)/gi)[0].split(","),(parseInt(a[0])<<16)+(parseInt(a[1])<<8)+parseInt(a[2]);if(a.match(/^\#/))return parseInt(a.substr(1),16);return 0};(function(){$('link[type="text/css"]').each(function(){var b=($(this).attr("href")||"").match(/\/?css\/([\w\-]+\.css)\?(\d+)/);b&&b[1]&&b[2]&&(a[b[1]]=b[2])})})();(function(){$("body").append('<div class="version" style="display:none; width:1px; height:1px;"></div>');
 for(var c=$(".version"),d=0;d<Muse.assets.required.length;){var f=Muse.assets.required[d],g=f.match(/([\w\-\.]+)\.(\w+)$/),k=g&&g[1]?g[1]:null,g=g&&g[2]?g[2]:null;switch(g.toLowerCase()){case "css":k=k.replace(/\W/gi,"_").replace(/^([^a-z])/gi,"_$1");c.addClass(k);var g=b(c.css("color")),h=b(c.css("background-color"));g!=0||h!=0?(Muse.assets.required.splice(d,1),"undefined"!=typeof a[f]&&(g!=a[f]>>>24||h!=(a[f]&16777215))&&Muse.assets.outOfDate.push(f)):d++;c.removeClass(k);break;case "js":k.match(/^jquery-[\d\.]+/gi)&&
-typeof $!="undefined"?Muse.assets.required.splice(d,1):d++;break;default:throw Error("Unsupported file type: "+g);}}c.remove();if(Muse.assets.outOfDate.length||Muse.assets.required.length)c="サーバー上の一部のファイルが見つからないか、正しくない可能性があります。ブラウザーのキャッシュをクリアして再試行してください。問題が解決されない場合は、Web サイトの作成者に問い合わせてください。",(d=location&&location.search&&location.search.match&&location.search.match(/muse_debug/gi))&&Muse.assets.outOfDate.length&&(c+="\nOut of date: "+Muse.assets.outOfDate.join(",")),d&&Muse.assets.required.length&&(c+="\nMissing: "+Muse.assets.required.join(",")),alert(c)})()})();/* body */
+typeof $!="undefined"?Muse.assets.required.splice(d,1):d++;break;default:throw Error("Unsupported file type: "+g);}}c.remove();if(Muse.assets.outOfDate.length||Muse.assets.required.length)c="サーバー上の一部のファイルが見つからないか、正しくない可能性があります。ブラウザーのキャッシュをクリアして再試行してください。問題が解決されない場合は、Web サイトの作成者に問い合わせてください。",(d=location&&location.search&&location.search.match&&location.search.match(/muse_debug/gi))&&Muse.assets.outOfDate.length&&(c+="\nOut of date: "+Muse.assets.outOfDate.join(",")),d&&Muse.assets.required.length&&(c+="\nMissing: "+Muse.assets.required.join(",")),alert(c)})()})();
+/* body */
 Muse.Utils.transformMarkupToFixBrowserProblemsPreInit();/* body */
 Muse.Utils.prepHyperlinks(true);/* body */
 Muse.Utils.fullPage('#page');/* 100% height page */

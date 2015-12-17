@@ -35,6 +35,110 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 		}
 	}
 	
+	$scope.getFoodList = function () {
+		var lfasparql = new LFASparql();
+	
+		var sparql_query = ' SELECT distinct * WHERE { '
+			+ ' graph <http://ja.dbpedia.org/> { '
+			+ ' { '
+			+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食肉加工品> . } '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用油脂> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食肉> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用川魚> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用キノコ> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用海藻> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用内臓> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:加工食品> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用甲殻類> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用貝> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:冷凍食品> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:健康食品> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食材> .} '
+			+ ' } '
+			+ ' ?subject rdfs:label ?name .   '
+			+ ' } '
+			+ ' } '
+			+ ' offset 200 limit 300 ';
+	
+		console.log(sparql_query);
+		lfasparql.executeSparql({
+			appID: "xawsaykmcb",
+			sparql: sparql_query,
+			success: getResult,
+			error: getError
+		});
+		
+		function getResult(data) {
+			console.log(data);
+			$scope.foods= [];
+			$scope.foods.push({ name: "", url: 0 }); // Initial Value
+			
+			if(data.length > 0) {
+				data.forEach(function(x) {
+					$scope.foods.push({ name: x.name.value, url: '<'+x.subject.value+'>' } );				
+				});
+			}
+			$scope.$apply();
+		}
+	}	
+
+	$scope.getGroceryList = function () {
+		var lfasparql = new LFASparql();
+	
+		var sparql_query = ' SELECT distinct * WHERE { '
+			+ ' graph <http://ja.dbpedia.org/> { '
+			+ ' { '
+			+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:日用品> . } '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧品> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:基礎化粧品> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容整形> .} '
+			+ ' union '
+			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容> .} '
+			+ ' } '
+			+ ' ?subject rdfs:label ?name .   '
+			+ ' } '
+			+ ' } '
+			+ ' limit 300 ';
+				
+		console.log(sparql_query);
+		lfasparql.executeSparql({
+			appID: "xawsaykmcb",
+			sparql: sparql_query,
+			success: getResult,
+			error: getError
+		});
+		
+		function getResult(data) {
+			console.log(data);
+			$scope.groceries= [];
+			$scope.groceries.push({ name: "", url: 0 }); // Initial Value
+			
+			if(data.length > 0) {
+				data.forEach(function(x) {
+					$scope.groceries.push({ name: x.name.value, url: '<'+x.subject.value+'>' } );				
+				});
+			}
+			$scope.$apply();
+		}
+	}
+	
 	$scope.getData = function (target) {
 		var selected;
 		if(!target) { 
