@@ -11,7 +11,7 @@
   <title>ホーム</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/site_global.css?4052507572"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?173399195" id="pagesheet"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?3937529244" id="pagesheet"/>
   <!-- Other scripts -->
   <script type="text/javascript">
    document.documentElement.className += ' js';
@@ -34,49 +34,7 @@
    <div class="clip_frame grpelem" id="u81"><!-- image -->
     <img class="block" id="u81_img" src="images/obachan.jpg" alt="" width="1228" height="2048"/>
    </div>
-   <div class="clearfix grpelem" id="u113"><!-- column -->
-    <div class="colelem" id="u102"><!-- custom html -->
-     <div id="searchBox" ng-controller="MainController">
-<form ng-submit="getData()">
-<input type="text" ng-model="searchText" ng-init='searchText="アセトフェノン"'>
-<button type="submit">話す</button>
-</form>
-</div>
-
-</div>
-    <div class="colelem" id="u105"><!-- custom html -->
-     <div id="abstractContainer" >
-<span>{{ abstract }}</span>
-</div>
-</div>
-    <div class="colelem" id="u107"><!-- custom html -->
-     <div id="imgDiv">
-<img ng-hide="!imageUrl" ng-src="{{ imageUrl }}" alt="イメージ">
-</div>
-</div>
-    <div class="clearfix colelem" id="pu109"><!-- group -->
-     <div class="grpelem" id="u109"><!-- custom html -->
-      <div id="molecularWeight">
-<span>{{ molecularWeight }}</span>
-</div>
-</div>
-     <div class="grpelem" id="u123"><!-- custom html -->
-      <div id="drugWeight">
- <span>{{ drugWeight }}</span>
- </div>
-
-
-</div>
-    </div>
-    <img class="colelem" id="u114-4" alt="こんなん関係ありそうやな！" width="286" height="28" src="images/u114-4.png"/><!-- rasterized frame -->
-    <div class="colelem" id="u111"><!-- custom html -->
-     <div id="listDiv">
-<ul>
-<li ng-repeat="item in refLists">{{ item.item }}</li>
-</ul>
-</div>
-</div>
-   </div>
+   <img class="grpelem" id="u114-4" alt="こんなん関係ありそうやな！(クリックすると教えてくれるよ）" width="421" height="28" src="images/u114-4.png"/><!-- rasterized frame -->
    <div class="grpelem" id="u117"><!-- custom html -->
     <div id="listDrugs" ng-controller="DrugListController" ng-init="getList()">
 <!-- くすり -->
@@ -85,26 +43,36 @@
 
 </div>
    <div class="grpelem" id="u119"><!-- custom html -->
-     <div id="drugAbstract">
- <span>{{ drugAbstract }}</span>
- </div>
+    <div id="drugAbstract">
+<span>{{ drugAbstract }}</span>
+</div>
 
 </div>
    <div class="grpelem" id="u121"><!-- custom html -->
      <div id="drugImage">
- <span><img ng-hide="!drugImageUrl" ng-src="{{ drugImageUrl }}" alt="薬イメージ"></span>
+ <span><img ng-hide="!drugImgUrl" ng-src="{{ drugImgUrl }}" alt="薬イメージ"></span>
  </div>
 
 </div>
-   <div class="grpelem" id="u125"><!-- custom html -->
-     <div id="drugRef">
- こんなん関係ありそうやな！
- <span><ul>
-<li ng-repeat="item in drugRefLists">{{ item.item }}</li>
-</ul>
-</span>
+   <div class="grpelem" id="u123"><!-- custom html -->
+    <div id="drugWeight">
+ <span>{{ drugWeight }}</span>
  </div>
 
+
+</div>
+   <div class="grpelem" id="u125"><!-- custom html -->
+    <div id="drugRef">
+<ul ng-controller="DrugListController">
+<li ng-model="drugRefModel" ng-repeat="item in drugRefLists" ng-click='getData(item.url);' style="cursor: pointer">{{ item.item }}</li>
+</ul>
+</div>
+
+</div>
+   <div class="grpelem" id="u127"><!-- custom html -->
+    <div id="drugBack">
+<span  ng-controller="DrugListController" ng-click="getData(orgSource);" ng-if="orgSource && orgSource!=targetSource" style='cursor: pointer'>最初に戻る</span>
+</div>
 </div>
    <div class="verticalspacer"></div>
   </div>

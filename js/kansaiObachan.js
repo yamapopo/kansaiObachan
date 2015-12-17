@@ -3,7 +3,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 	$scope.getList = function () {
 		var lfasparql = new LFASparql();
 	
-		var sparql_query = ' SELECT * WHERE { '
+		var sparql_query = ' SELECT distinct * WHERE { '
 			+ ' graph <http://ja.dbpedia.org/> { '
 			+ ' ?subject dct:subject <http://ja.dbpedia.org/resource/Category:一般用医薬品> . '
 			+ ' ?subject rdfs:label ?name . '
@@ -33,8 +33,16 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 		}
 	}
 	
-	$scope.getData = function () {
-		var selected = $scope.drugListModel
+	$scope.getData = function (target) {
+		var selected;
+		if(!target) { 
+			 selected = $scope.drugListModel;
+			 $rootScope.orgSource=selected;
+		} else {
+			selected = target;	
+		};
+		$rootScope.targetSource=selected;	
+		console.log("target:", selected); 
 		if (selected != 0)	console.log("Selected:", selected);
 		var promise = getLod4allData(selected);
 		promise.then(function(msg) {
@@ -42,16 +50,23 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 			console.log("result:", result);
 			if(result.query1.length>0) {
 				$rootScope.drugAbstract = osakaDecode(result.query1[0].abstract.value);
+			} else {
+				$rootScope.drugAbstract = "そんなん知らんわ！";
 			}
 			if(result.query2.length>0) {
 				$rootScope.drugRefLists = [];
 				result.query2.forEach(function(x) {
-					$rootScope.drugRefLists.push( {item: x.label.value});
+					$rootScope.drugRefLists.push( {item: x.label.value, url:"<"+x.page.value+">" });
 				});
+			} else {
+				$rootScope.drugRefLists = [];
 			}
 			if(result.query3.length>0) {
 				$rootScope.drugWeight = "分子量は " + result.query3[0].weight.value +" や！";
-				$rootScope.drugImgUri = result.query3[0].image.value;
+				$rootScope.drugImgUrl = result.query3[0].image.value;
+			} else {
+				$rootScope.drugWeight = "";
+				$rootScope.drugImgUrl = "";				
 			}
 //			$scope.$apply();
 		
@@ -81,7 +96,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 				result.query1 = data;
 //				if (data.length>0) { $rootScope.drugAbstract = data[0].abstract.value; }
 				var lfasparql2 = new LFASparql();
-				var sparql_query2 = 'SELECT * WHERE{'
+				var sparql_query2 = 'SELECT distinct * WHERE{'
 					+ target + ' dbpedia-owl:wikiPageWikiLink ?page . '
 					+ ' ?page rdfs:label ?label .'
 					+ ' }';
@@ -93,7 +108,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 						console.log("query2-res:",data);
 						result.query2 = data;
 						var lfasparql3 = new LFASparql();
-						var sparql_query3 = 'SELECT * WHERE{'
+						var sparql_query3 = 'SELECT distinct * WHERE{'
 							+ ' ?subject rdfs:seeAlso ?target .'
 							+ ' ?subject foaf:depiction ?image .'
 							+ ' ?subject <http://vocab.jst.go.jp/terms/sti#molar-weight> ?weight .'
@@ -125,85 +140,6 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 		return deferred.promise;
 	}
 }]);
-
-
-		
-app.controller("MainController", ["$scope", "$rootScope", function($scope, $rootScope){		
-	$scope.getData = function () {
-		$scope.results=[];
-		console.log("TEST");
-		console.log($scope.searchText);
-
-		var lfasparql = new LFASparql();
-
-		var sparql_query = ' SELECT * WHERE{'
-					+ ' ?target dbpedia-owl:abstract ?abstract .'
-					+ ' ?subject rdfs:seeAlso ?target .'
-					+ ' ?subject foaf:depiction ?image .'
-					+ ' ?subject <http://vocab.jst.go.jp/terms/sti#molar-weight> ?weight .'
-					+ ' values ?target { <http://ja.dbpedia.org/resource/'+ $scope.searchText + '> } .'
-					+ ' }';
-
-		console.log(sparql_query);
-		lfasparql.executeSparql({
-			appID: "xawsaykmcb",
-			sparql: sparql_query,
-			success: getResult,
-			error: getError
-		});
-		
-		var lfasparql2 = new LFASparql();
-		var sparql_query2 = 'SELECT * WHERE{'
-				+ ' <http://ja.dbpedia.org/resource/' + $scope.searchText+ '> dbpedia-owl:wikiPageWikiLink ?page ;'
-				+ '    dbpedia-owl:abstract ?abstract .'
-				+ ' ?page rdfs:label ?label .'
-				+ ' }';
-		console.log(sparql_query2);
-		lfasparql2.executeSparql({
-			appID: "xawsaykmcb",
-			sparql: sparql_query2,
-			success: getResult2,
-			error: getError
-		});
-		
-	}
-
-	function getResult(data) {
-		console.log(data);
-		$rootScope.imageUrl="";
-		$rootScope.molecularWeight="";
-		
-		if(data.length > 0) {
-			$rootScope.imageUrl=data[0].image.value;
-			$rootScope.molecularWeight="分子量は " + data[0].weight.value + " や！";
-		} else {
-			$scope.imageUrl=false;
-		}
-		$scope.$apply();
-	}
-	
-	function getResult2(data) {
-		console.log(data);
-		$rootScope.abstract="そんなん知らんわ！"
-		$rootScope.refLists = [];
-		if (data.length>0) {
-//					$scope.dispLists=false;
-			$rootScope.abstract = osakaDecode(data[0].abstract.value);
-			data.forEach(function(val) {
-				$rootScope.refLists.push({ item: val.label.value});
-			});
-		} else {
-//					$scope.dispLists=true;
-			data.forEach(function(val) {
-				$rootScope.refLists.push({ item: val.label.value});
-			});				
-		}
-
-		$scope.$apply();
-	}
-}]);
-		
-
 
 function getError(xhr, status, error) {
 	var error_json = JSON.parse(xhr.responseText);
