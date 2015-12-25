@@ -126,6 +126,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 			console.log("result:", result);
 			if(result.query1.length>0) {
 				$rootScope.drugAbstract = osakaDecode(result.query1[0].abstract.value);
+				$rootScope.itemName = result.query1[0].label.value;
 			} else {
 				$rootScope.drugAbstract = "そんなん知らんわ！";
 			}
@@ -168,6 +169,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 		var lfasparql = new LFASparql();
 		var sparql_query = ' SELECT * WHERE{'
 			+ ' ?target dbpedia-owl:abstract ?abstract .'
+			+ ' ?target rdfs:label ?label . '
 			+ ' values ?target { ' + target + ' } .'
 			+ ' }';
 	
