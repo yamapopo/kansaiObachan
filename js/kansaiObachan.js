@@ -220,6 +220,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 					+ ' { '
 					+ ' ?target <http://dbpedia.org/ontology/wikiPageWikiLink> ?page . '
 					+ ' ?subject <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?page . '
+					+ ' ?subject <http://vocab.jst.go.jp/terms/sti#nikkaji-number> ?number . '
 					+ ' ?subject <http://www.w3.org/2000/01/rdf-schema#label> ?label  filter (lang(?label) = "ja") . '
 					+ ' values ?target { ' + target + ' } .'
 					+ ' } '
