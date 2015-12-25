@@ -13,17 +13,13 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 			+ ' } '
 			+ ' limit 300 '
 */			
-		var sparql_query ='SELECT distinct ?subject  ?name WHERE{ '
-			+ ' { '
-			+ ' { ?subject <http://purl.org/dc/terms/subject> <http://ja.dbpedia.org/resource/Category:一般用医薬品> . } '
-			+ ' union '
-			+ '  { ?subject <http://purl.org/dc/terms/subject> <http://ja.dbpedia.org/resource/Category:一般用医薬品> . }} '
+		var sparql_query ='SELECT distinct ?subject ?name WHERE{ '
+			+ '  { ?subject <http://purl.org/dc/terms/subject> <http://ja.dbpedia.org/resource/Category:一般用医薬品> . } '
 			+ '  ?subject <http://www.w3.org/2000/01/rdf-schema#label> ?name . '
 			+ '  ?subject <http://dbpedia.org/ontology/wikiPageWikiLink> ?s2 . '
 			+ '  ?c <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?s2 . '
 			+ '  ?c <http://vocab.jst.go.jp/terms/sti#nikkaji-number> ?number . '
 			+ ' } '
-
 	
 		console.log(sparql_query);
 		lfasparql.executeSparql({
@@ -50,39 +46,25 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 	$scope.getFoodList = function () {
 		var lfasparql = new LFASparql();
 	
-		var sparql_query = ' SELECT distinct * WHERE { '
-			+ ' graph <http://ja.dbpedia.org/> { '
-			+ ' { '
-			+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食肉加工品> . } '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用油脂> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食肉> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用川魚> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用キノコ> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用海藻> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用内臓> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:加工食品> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用甲殻類> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用貝> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:冷凍食品> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:健康食品> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食材> .} '
-			+ ' } '
-			+ ' ?subject rdfs:label ?name .   '
-			+ ' } '
-			+ ' } '
-			+ ' offset 200 limit 300 ';
+		var sparql_query = 'SELECT distinct ?subject ?name  WHERE { ' 
+				+ ' { '
+				+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用油脂> .}   '
+				+ ' union  { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食肉加工品> . }   '
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:加工食品> .}   '
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食肉> .}   '
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用川魚> .}   '
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用キノコ> .}   '
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用海藻> .}   '
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用内臓> .}   '
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用甲殻類> .}  ' 
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用貝> .}   '
+				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食材> .} '
+				+ ' }  '
+				+ ' ?subject rdfs:label ?name . '
+				+ ' ?subject <http://dbpedia.org/ontology/wikiPageWikiLink> ?page . '
+				+ ' ?chemi <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?page . '
+				+ ' ?chemi <http://vocab.jst.go.jp/terms/sti#nikkaji-number> ?number .   '
+				+ ' } '
 	
 		console.log(sparql_query);
 		lfasparql.executeSparql({
@@ -109,7 +91,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 	$scope.getGroceryList = function () {
 		var lfasparql = new LFASparql();
 	
-		var sparql_query = ' SELECT distinct * WHERE { '
+/*		var sparql_query = ' SELECT distinct * WHERE { '
 			+ ' graph <http://ja.dbpedia.org/> { '
 			+ ' { '
 			+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:日用品> . } '
@@ -128,6 +110,21 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 			+ ' } '
 			+ ' } '
 			+ ' limit 300 ';
+*/			
+		var sparql_query = 'SELECT distinct ?subject ?name  WHERE { '
+			+ ' { '
+			+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:日用品> . } '
+			+ ' union { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧品> .} '
+			+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧> .} '
+			+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:基礎化粧品> .} '
+			+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容整形> .} '
+			+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容> .} '
+			+ ' }  '
+			+ ' ?subject rdfs:label ?name . '
+			+ ' ?subject <http://dbpedia.org/ontology/wikiPageWikiLink> ?page . '
+			+ ' ?chemi <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?page . '
+			+ ' ?chemi <http://vocab.jst.go.jp/terms/sti#nikkaji-number> ?number .   '
+			+ ' } ';
 				
 		console.log(sparql_query);
 		lfasparql.executeSparql({
@@ -221,9 +218,10 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 */
 				var sparql_query2 = 'SELECT distinct ?label ?page ?subject WHERE '
 					+ ' { '
-					+ target + ' <http://dbpedia.org/ontology/wikiPageWikiLink> ?page . '
+					+ ' ?target <http://dbpedia.org/ontology/wikiPageWikiLink> ?page . '
 					+ ' ?subject <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?page . '
-					+ ' ?subject <http://www.w3.org/2000/01/rdf-schema#label> ?label  FILTER (lang(?label) = "ja") . '
+					+ ' ?subject <http://www.w3.org/2000/01/rdf-schema#label> ?label  filter (lang(?label) = "ja") . '
+					+ ' values ?target { ' + target + ' } .'
 					+ ' } '
 					console.log(sparql_query2);
 				lfasparql2.executeSparql({
