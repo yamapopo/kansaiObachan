@@ -11,7 +11,7 @@
   <title>ホーム</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/site_global.css?4052507572"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?4167318719" id="pagesheet"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?118536610" id="pagesheet"/>
   <!-- Other scripts -->
   <script type="text/javascript">
    document.documentElement.className += ' js';
@@ -44,8 +44,8 @@
 
 </div>
    <div class="grpelem" id="u119"><!-- custom html -->
-    <div id="drugAbstract">
-<span>{{ drugAbstract }}</span>
+    <div id="drugAbstract"  style="width:370px; height:270px; overflow-y:auto" >
+{{ drugAbstract }}
 </div>
 
 </div>
@@ -63,8 +63,8 @@
 
 </div>
    <div class="grpelem" id="u125"><!-- custom html -->
-    <div id="drugRef">
-<ul ng-controller="DrugListController">
+    <div id="drugRef"   style="width:370px; height:270px; overflow-y:auto" >
+<ul ng-controller="DrugListController" >
 <li ng-model="drugRefModel" ng-repeat="drug in drugRefLists" ng-click='getData(drug.url);' style="cursor: pointer">{{ drug.item }}</li>
 </ul>
 </div>
@@ -90,8 +90,8 @@
 
 </div>
    <div class="grpelem" id="u133"><!-- custom html -->
-    <div id="itemRef">
-<ul ng-controller="DrugListController">
+    <div id="itemRef"   style="width:370px; height:270px; overflow-y:auto" >
+<ul ng-controller="DrugListController" >
 <li ng-model="itemRefModel" ng-repeat="item in itemRefLists" ng-click='getData(item.url);' style="cursor: pointer">{{ item.item }}</li>
 </ul>
 </div>
@@ -102,7 +102,7 @@
 (クリックすると教えてくれるよ）" width="226" height="55" src="images/u135-6.png"/><!-- rasterized frame -->
    <div class="grpelem" id="u136"><!-- custom html -->
     <div id="itemAbstract">
-<span style="font-size:32px; font-weight: bold" ng-model="itemName">{{ itemName }}</span>
+<span style="vertical-align:text-top; font-size:32px; font-weight: bold" ng-model="itemName">{{ itemName }}</span>
 </div>
 
 </div>
