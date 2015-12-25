@@ -1,4 +1,4 @@
-<manifest alg="2" build="2015.0.2.310" opt="true" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" domain="example.com" resolutions="1x" timestamp="1451028785584">
+<manifest alg="2" build="2015.0.2.310" opt="true" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" domain="example.com" resolutions="1x" timestamp="1451029263172">
   <folder name="css">
     <file name="site_global.css" crc="4052507572"/>
     <file name="index.css" crc="144062614" ref="index"/>
@@ -10,8 +10,8 @@
   </folder>
   <folder name="images">
     <file name="obachan.jpg" crc="4037414236" seo="true" ref="index"/>
-    <file name="u114-6.png" crc="4075400550" ref="index"/>
-    <file name="u135-6.png" crc="3985616340" ref="index"/>
+    <file name="u114-6.png" crc="3985616340" ref="index"/>
+    <file name="u135-6.png" crc="3939782640" ref="index"/>
   </folder>
-  <file name="index.html" crc="409525803" seo="true" mt="1451028761166" redirect="true"/>
+  <file name="index.html" crc="3938753086" seo="true" mt="1451029235051" redirect="true"/>
 </manifest>
