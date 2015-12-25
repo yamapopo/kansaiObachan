@@ -3,7 +3,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 	$scope.getList = function () {
 		var lfasparql = new LFASparql();
 	
-		var sparql_query = ' SELECT distinct * WHERE { '
+/*		var sparql_query = ' SELECT distinct * WHERE { '
 			+ ' graph <http://ja.dbpedia.org/> { '
     		+ ' {{ ?subject dct:subject <http://ja.dbpedia.org/resource/Category:一般用医薬品> . } '
     		+ ' union '
@@ -12,6 +12,18 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 			+ ' } '
 			+ ' } '
 			+ ' limit 300 '
+*/			
+		var sparql_query ='SELECT distinct ?subject  ?name WHERE{ '
+			+ ' { '
+			+ ' { ?subject <http://purl.org/dc/terms/subject> <http://ja.dbpedia.org/resource/Category:一般用医薬品> . } '
+			+ ' union '
+			+ '  { ?subject <http://purl.org/dc/terms/subject> <http://ja.dbpedia.org/resource/Category:一般用医薬品> . }} '
+			+ '  ?subject <http://www.w3.org/2000/01/rdf-schema#label> ?name . '
+			+ '  ?subject <http://dbpedia.org/ontology/wikiPageWikiLink> ?s2 . '
+			+ '  ?c <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?s2 . '
+			+ '  ?c <http://vocab.jst.go.jp/terms/sti#nikkaji-number> ?number . '
+			+ ' } '
+
 	
 		console.log(sparql_query);
 		lfasparql.executeSparql({
@@ -202,11 +214,18 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 				result.query1 = data;
 //				if (data.length>0) { $rootScope.drugAbstract = data[0].abstract.value; }
 				var lfasparql2 = new LFASparql();
-				var sparql_query2 = 'SELECT distinct * WHERE{'
+/*				var sparql_query2 = 'SELECT distinct * WHERE{'
 					+ target + ' dbpedia-owl:wikiPageWikiLink ?page . '
 					+ ' ?page rdfs:label ?label .'
 					+ ' }';
-				console.log(sparql_query2);
+*/
+				var sparql_query2 = 'SELECT distinct ?label ?page ?subject WHERE '
+					+ ' { '
+					+ target + ' <http://dbpedia.org/ontology/wikiPageWikiLink> ?page . '
+					+ ' ?subject <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?page . '
+					+ ' ?subject <http://www.w3.org/2000/01/rdf-schema#label> ?label  FILTER (lang(?label) = "ja") . '
+					+ ' } '
+					console.log(sparql_query2);
 				lfasparql2.executeSparql({
 					appID: "xawsaykmcb",
 					sparql: sparql_query2,
