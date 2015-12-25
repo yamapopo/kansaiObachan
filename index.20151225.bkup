@@ -11,7 +11,7 @@
   <title>ホーム</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/site_global.css?4052507572"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?144062614" id="pagesheet"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?4070370043" id="pagesheet"/>
   <!-- Other scripts -->
   <script type="text/javascript">
    document.documentElement.className += ' js';
@@ -34,8 +34,7 @@
    <div class="clip_frame grpelem" id="u81"><!-- image -->
     <img class="block" id="u81_img" src="images/obachan.jpg" alt="" width="1228" height="2048"/>
    </div>
-   <img class="grpelem" id="u114-6" alt="こんなん含まれているな！
-(クリックすると教えてくれるよ）" width="226" height="55" src="images/u114-6.png"/><!-- rasterized frame -->
+   <img class="grpelem" id="u114-4" alt="こんなん関係ありそうやな！(クリックすると教えてくれるよ）" width="421" height="28" src="images/u114-4.png"/><!-- rasterized frame -->
    <div class="grpelem" id="u117"><!-- custom html -->
     <div id="listDrugs" ng-controller="DrugListController" ng-init="getList()">
 <!-- くすり -->
@@ -65,9 +64,16 @@
    <div class="grpelem" id="u125"><!-- custom html -->
     <div id="drugRef">
 <ul ng-controller="DrugListController">
-<li ng-model="drugRefModel" ng-repeat="drug in drugRefLists" ng-click='getData(drug.url);' style="cursor: pointer">{{ drug.item }}</li>
+<li ng-model="drugRefModel" ng-repeat="item in drugRefLists" ng-click='getData(item.url);' style="cursor: pointer">{{ item.item }}</li>
 </ul>
 </div>
+
+<div id="itemRef">
+<ul ng-controller="DrugListController">
+<li ng-model="itemRefModel" ng-repeat="item in itemRefLists" ng-click='getData(item.url);' style="cursor: pointer">{{ item.item }}</li>
+</ul>
+</div>
+
 
 </div>
    <div class="grpelem" id="u127"><!-- custom html -->
@@ -89,17 +95,6 @@
 </div>
 
 </div>
-   <div class="grpelem" id="u133"><!-- custom html -->
-    <div id="itemRef">
-<ul ng-controller="DrugListController">
-<li ng-model="itemRefModel" ng-repeat="item in itemRefLists" ng-click='getData(item.url);' style="cursor: pointer">{{ item.item }}</li>
-</ul>
-</div>
-
-
-</div>
-   <img class="grpelem" id="u135-6" alt="こんなん関係ありそうやな！
-(クリックすると教えてくれるよ）" width="226" height="55" src="images/u135-6.png"/><!-- rasterized frame -->
    <div class="verticalspacer"></div>
   </div>
   <!-- JS includes -->

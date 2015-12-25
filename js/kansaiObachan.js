@@ -3,16 +3,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 	$scope.getList = function () {
 		var lfasparql = new LFASparql();
 	
-/*		var sparql_query = ' SELECT distinct * WHERE { '
-			+ ' graph <http://ja.dbpedia.org/> { '
-    		+ ' {{ ?subject dct:subject <http://ja.dbpedia.org/resource/Category:一般用医薬品> . } '
-    		+ ' union '
-    		+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:医薬品> . }} '
-			+ ' ?subject rdfs:label ?name . '
-			+ ' } '
-			+ ' } '
-			+ ' limit 300 '
-*/			
+
 		var sparql_query ='SELECT distinct ?subject ?name WHERE{ '
 			+ '  { ?subject <http://purl.org/dc/terms/subject> <http://ja.dbpedia.org/resource/Category:一般用医薬品> . } '
 			+ '  ?subject <http://www.w3.org/2000/01/rdf-schema#label> ?name . '
@@ -49,16 +40,9 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 		var sparql_query = 'SELECT distinct ?subject ?name  WHERE { ' 
 				+ ' { '
 				+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用油脂> .}   '
-				+ ' union  { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食肉加工品> . }   '
-				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:加工食品> .}   '
-				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食肉> .}   '
-				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用川魚> .}   '
 				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用キノコ> .}   '
-				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用海藻> .}   '
-				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用内臓> .}   '
 				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用甲殻類> .}  ' 
 				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用貝> .}   '
-				+ ' union  {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食材> .} '
 				+ ' }  '
 				+ ' ?subject rdfs:label ?name . '
 				+ ' ?subject <http://dbpedia.org/ontology/wikiPageWikiLink> ?page . '
@@ -91,33 +75,10 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 	$scope.getGroceryList = function () {
 		var lfasparql = new LFASparql();
 	
-/*		var sparql_query = ' SELECT distinct * WHERE { '
-			+ ' graph <http://ja.dbpedia.org/> { '
-			+ ' { '
-			+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:日用品> . } '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧品> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:基礎化粧品> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容整形> .} '
-			+ ' union '
-			+ ' {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容> .} '
-			+ ' } '
-			+ ' ?subject rdfs:label ?name .   '
-			+ ' } '
-			+ ' } '
-			+ ' limit 300 ';
-*/			
 		var sparql_query = 'SELECT distinct ?subject ?name  WHERE { '
 			+ ' { '
 			+ ' { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:日用品> . } '
-			+ ' union { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧品> .} '
-			+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧> .} '
-			+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:基礎化粧品> .} '
-			+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容整形> .} '
+			+ ' union { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧> .} '
 			+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容> .} '
 			+ ' }  '
 			+ ' ?subject rdfs:label ?name . '
@@ -183,6 +144,14 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 				$rootScope.drugWeight = "";
 				$rootScope.drugImgUrl = "";				
 			}
+			if(result.query4.length>0) {
+				$rootScope.itemRefLists = [];
+				result.query4.forEach(function(x) {
+					$rootScope.itemRefLists.push( {item: x.name.value, url: "<" + x.subject.value + ">" });
+				});
+			} else {
+				$rootScope.itemRefLists = [];
+			}
 //			$scope.$apply();
 		
 		}, function(msg) {
@@ -245,7 +214,35 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 							success: function(data) {
 								console.log("query3-res:",data);
 								result.query3 = data;
-								deferred.resolve("Success");
+								var lfasparql4 = new LFASparql();
+								var sparql_query4 = 'SELECT distinct ?subject ?name WHERE{ '
+									+ ' { '
+									+ ' { ?subject <http://purl.org/dc/terms/subject> <http://ja.dbpedia.org/resource/Category:一般用医薬品> . } '
+									+ ' union { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用油脂> .} '
+									+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用キノコ> .} '
+									+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用甲殻類> .}  '
+									+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:食用貝> .} '
+									+ ' union { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:日用品> . } '
+									+ ' union { ?subject dct:subject <http://ja.dbpedia.org/resource/Category:化粧> .} '
+									+ ' union {  ?subject dct:subject <http://ja.dbpedia.org/resource/Category:美容> .} '
+									+ ' } '
+									+ ' ?subject <http://www.w3.org/2000/01/rdf-schema#label> ?name . '
+									+ ' ?subject <http://dbpedia.org/ontology/wikiPageWikiLink> ?target .  '
+									+ ' ?chemi <http://www.w3.org/2000/01/rdf-schema#seeAlso> ?target . '
+									+ ' filter  regex( str(?chemi), "http://stirdf\.jst\.go\.jp/") . '
+									+ ' values ?target { '+ target + ' } . '
+									+ ' } '
+								console.log(sparql_query4);
+								lfasparql4.executeSparql({
+									appID: "xawsaykmcb",
+									sparql: sparql_query4,
+									success: function(data) {
+										console.log("query4-res:",data);
+										result.query4 = data;
+										deferred.resolve("Success");
+									},
+									error: getError								
+								});
 							},
 							error: getError
 						});

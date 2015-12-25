@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://example.com/images/obachan.jpg</loc>
-    <lastmod>2015-12-17</lastmod>
+    <lastmod>2015-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://example.com/index.html</loc>
-    <lastmod>2015-12-17</lastmod>
+    <lastmod>2015-12-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
