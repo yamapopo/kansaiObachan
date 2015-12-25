@@ -11,7 +11,7 @@
   <title>ホーム</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/site_global.css?4052507572"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?118536610" id="pagesheet"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?4007097454" id="pagesheet"/>
   <!-- Other scripts -->
   <script type="text/javascript">
    document.documentElement.className += ' js';
@@ -39,7 +39,7 @@
    <div class="grpelem" id="u117"><!-- custom html -->
     <div id="listDrugs" ng-controller="DrugListController" ng-init="getList()">
 <!-- くすり -->
-  <select ng-model="drugListModel" ng-options="drug.url as drug.name for drug in drugs" ng-init="drugListModel=0" ng-change="getData()"></select>
+  <select ng-model="drugListModel" ng-options="drug.url as drug.name for drug in drugs" ng-init="drugListModel=0" ng-change="getData()" style="width:200px"></select>
 </div>
 
 </div>
@@ -50,14 +50,14 @@
 
 </div>
    <div class="grpelem" id="u121"><!-- custom html -->
-     <div id="drugImage">
- <span><img ng-hide="!drugImgUrl" ng-src="{{ drugImgUrl }}" alt="薬イメージ"></span>
+     <div id="drugImage" >
+<span style="text-align:left; vertical-aling:top"><img ng-hide="!drugImgUrl" ng-src="{{ drugImgUrl }}" alt="分子構造イメージ"　style="width:302px; height:202px"></span>
  </div>
 
 </div>
    <div class="grpelem" id="u123"><!-- custom html -->
-    <div id="drugWeight">
- <span>{{ drugWeight }}</span>
+    <div id="drugWeight" style="width:200px">
+{{ drugWeight }}
  </div>
 
 
@@ -78,14 +78,14 @@
    <div class="grpelem" id="u129"><!-- custom html -->
     <!-- 食品 -->
 <div id="listFood" ng-controller="DrugListController" ng-init="getFoodList()">
-    <select ng-model="drugListModel" ng-options="food.url as food.name for food in foods" ng-init="drugListModel=0" ng-change="getData()"></select>
+    <select ng-model="drugListModel" ng-options="food.url as food.name for food in foods" ng-init="drugListModel=0" ng-change="getData()"  style="width:200px"></select>
 </div>
 
 </div>
    <div class="grpelem" id="u131"><!-- custom html -->
     <!-- その他 -->
 <div id="listGrocery" ng-controller="DrugListController" ng-init="getGroceryList()">
-    <select ng-model="drugListModel" ng-options="grocery.url as grocery.name for grocery in groceries" ng-init="drugListModel=0" ng-change="getData()"></select>
+    <select ng-model="drugListModel" ng-options="grocery.url as grocery.name for grocery in groceries" ng-init="drugListModel=0" ng-change="getData()" style="width:200px"></select>
 </div>
 
 </div>
@@ -102,7 +102,7 @@
 (クリックすると教えてくれるよ）" width="226" height="55" src="images/u135-6.png"/><!-- rasterized frame -->
    <div class="grpelem" id="u136"><!-- custom html -->
     <div id="itemAbstract">
-<span style="vertical-align:text-top; font-size:32px; font-weight: bold" ng-model="itemName">{{ itemName }}</span>
+<span style="position:absolute; top:10px; font-size:28px; vertical-align:text-top" ng-model="itemName">{{ itemName }}</span>
 </div>
 
 </div>
