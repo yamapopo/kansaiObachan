@@ -30,6 +30,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 					$scope.drugs.push({ name: x.name.value, url: '<'+x.subject.value+'>' } );				
 				});
 			}
+			$rootScope.eyecon=true;
 			$scope.$apply();
 		}
 	}
@@ -110,6 +111,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 	}
 	
 	$scope.getData = function (target) {
+		$rootScope.eyecon=false;
 		var selected;
 		if(!target) { 
 			 selected = $scope.drugListModel;
@@ -153,6 +155,7 @@ app.controller("DrugListController", ["$scope", "$q", "$rootScope", function ($s
 			} else {
 				$rootScope.itemRefLists = [];
 			}
+			$rootScope.eyecon=true;
 //			$scope.$apply();
 		
 		}, function(msg) {
