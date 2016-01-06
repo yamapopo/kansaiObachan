@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.com/images/obachan.jpg</loc>
-    <lastmod>2015-12-28</lastmod>
+    <loc>http://example.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202015-12-15%20170355.jpg</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/51z-bl1a6vl_aa160_.jpg</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/51eeivx2gql_aa160_.jpg</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/41w2rzpw00l_aa160_.jpg</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/oba.png</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/etc.png</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/food.png</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/drug.png</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/babazon86x86.png</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89.jpg</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/babazon.png</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/18112-nrugsq.jpg</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202015-12-15%20170423.jpg</loc>
+    <lastmod>2016-01-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://example.com/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202015-12-15%20170412.jpg</loc>
+    <lastmod>2016-01-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://example.com/index.html</loc>
-    <lastmod>2015-12-28</lastmod>
+    <lastmod>2016-01-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
