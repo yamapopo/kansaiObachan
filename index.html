@@ -11,7 +11,7 @@
   <title>ホーム</title>
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/site_global.css?4052507572"/>
-  <link rel="stylesheet" type="text/css" href="css/index.css?183449456" id="pagesheet"/>
+  <link rel="stylesheet" type="text/css" href="css/index.css?4128576756" id="pagesheet"/>
   <!-- Other scripts -->
   <script type="text/javascript">
    document.documentElement.className += ' js';
@@ -72,83 +72,57 @@
       <div class="grpelem" id="u97"><!-- simple frame --></div>
      </div>
      <div class="clearfix grpelem" id="u239"><!-- column -->
-      <div class="clearfix colelem" id="pu236"><!-- group -->
-       <div class="clip_frame grpelem" id="u236"><!-- image -->
-        <img class="block" id="u236_img" src="images/%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89.jpg" alt="" width="133" height="28"/>
+      <div class="position_content" id="u239_position_content">
+       <div class="clearfix colelem" id="pu236"><!-- group -->
+        <div class="clip_frame grpelem" id="u236"><!-- image -->
+         <img class="block" id="u236_img" src="images/%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89.jpg" alt="" width="133" height="28"/>
+        </div>
+        <div class="clip_frame grpelem" id="u233"><!-- image -->
+         <img class="block" id="u233_img" src="images/%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89.jpg" alt="" width="133" height="28"/>
+        </div>
+        <div class="clip_frame grpelem" id="u176"><!-- image -->
+         <img class="block" id="u176_img" src="images/%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89.jpg" alt="" width="133" height="28"/>
+        </div>
        </div>
-       <div class="clip_frame grpelem" id="u233"><!-- image -->
-        <img class="block" id="u233_img" src="images/%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89.jpg" alt="" width="133" height="28"/>
-       </div>
-       <div class="clip_frame grpelem" id="u176"><!-- image -->
-        <img class="block" id="u176_img" src="images/%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89.jpg" alt="" width="133" height="28"/>
-       </div>
-      </div>
-      <div class="clearfix colelem" id="pu123"><!-- group -->
-       <div class="grpelem" id="u123"><!-- custom html -->
-        <div id="drugWeight" style="width:200px">
-{{ drugWeight }}
- </div>
-
-
-</div>
-       <div class="grpelem" id="u117"><!-- custom html -->
-        <div id="listDrugs" ng-controller="DrugListController" ng-init="getList()">
+       <div class="clearfix colelem" id="pu117"><!-- group -->
+        <div class="grpelem" id="u117"><!-- custom html -->
+         <div id="listDrugs" ng-controller="DrugListController" ng-init="getList()">
 <!-- くすり -->
   <select ng-model="drugListModel" ng-options="drug.url as drug.name for drug in drugs" ng-init="drugListModel=0" ng-change="getData()" style="width:200px"></select>
 </div>
 
 </div>
-       <div class="grpelem" id="u129"><!-- custom html -->
-        <!-- 食品 -->
+        <div class="grpelem" id="u129"><!-- custom html -->
+         <!-- 食品 -->
 <div id="listFood" ng-controller="DrugListController" ng-init="getFoodList()">
     <select ng-model="drugListModel" ng-options="food.url as food.name for food in foods" ng-init="drugListModel=0" ng-change="getData()"  style="width:200px"></select>
 </div>
 
 </div>
-       <div class="grpelem" id="u131"><!-- custom html -->
-        <!-- その他 -->
+        <div class="grpelem" id="u131"><!-- custom html -->
+         <!-- その他 -->
 <div id="listGrocery" ng-controller="DrugListController" ng-init="getGroceryList()">
     <select ng-model="drugListModel" ng-options="grocery.url as grocery.name for grocery in groceries" ng-init="drugListModel=0" ng-change="getData()" style="width:200px"></select>
 </div>
 
 </div>
-      </div>
-      <div class="colelem" id="u127"><!-- custom html -->
-       <div id="drugBack">
+       </div>
+       <div class="colelem" id="u127"><!-- custom html -->
+        <div id="drugBack">
 <span  ng-controller="DrugListController" ng-click="getData(orgSource);" ng-if="orgSource && orgSource!=targetSource" style='cursor: pointer'>最初に戻る</span>
 </div>
 </div>
-      <div class="clearfix colelem" id="pu114-6"><!-- group -->
-       <img class="grpelem" id="u114-6" alt="こんなん関係ありそうやな！
-(クリックすると教えてくれるよ）" width="226" height="55" src="images/u114-6.png"/><!-- rasterized frame -->
-       <img class="grpelem" id="u135-6" alt="こんなんに使われていそうやな！
-(クリックすると教えてくれるよ）" width="226" height="55" src="images/u135-6.png"/><!-- rasterized frame -->
-      </div>
-      <div class="clearfix colelem" id="pu119"><!-- group -->
-       <div class="grpelem" id="u119"><!-- custom html -->
-        <div id="drugAbstract"  style="width:370px; height:270px; overflow-y:auto" >
+       <div class="clearfix colelem" id="pu119"><!-- group -->
+        <div class="grpelem" id="u119"><!-- custom html -->
+         <div id="drugAbstract"  style="width:370px; height:270px; overflow-y:auto" >
 {{ drugAbstract }}
 </div>
 
 </div>
-       <div class="grpelem" id="u125"><!-- custom html -->
-        <div id="drugRef"   style="width:370px; height:270px; overflow-y:auto" >
-<ul ng-controller="DrugListController" >
-<li ng-model="drugRefModel" ng-repeat="drug in drugRefLists" ng-click='getData(drug.url);' style="cursor: pointer">{{ drug.item }}</li>
-</ul>
-</div>
-
-</div>
-      </div>
-     </div>
-     <div class="grpelem" id="u121"><!-- custom html -->
-       <div id="drugImage" >
-<span style="text-align:left; vertical-aling:top"><img ng-hide="!drugImgUrl" ng-src="{{ drugImgUrl }}" alt="分子構造イメージ"　style="width:302px; height:202px"></span>
- </div>
-
-</div>
-     <div class="grpelem" id="u133"><!-- custom html -->
-      <div id="itemRef"   style="width:370px; height:270px; overflow-y:auto" >
+        <img class="grpelem" id="u114-6" alt="こんなん関係ありそうやな！
+(クリックすると教えてくれるよ）" width="226" height="55" src="images/u114-6.png"/><!-- rasterized frame -->
+        <div class="grpelem" id="u133"><!-- custom html -->
+         <div id="itemRef"   style="width:225px; height:270px; overflow-y:auto; overflow-x:auto" >
 <ul ng-controller="DrugListController" >
 <li ng-model="itemRefModel" ng-repeat="item in itemRefLists" ng-click='getData(item.url);' style="cursor: pointer">{{ item.item }}</li>
 </ul>
@@ -156,6 +130,34 @@
 
 
 </div>
+        <div class="clearfix grpelem" id="pu123"><!-- column -->
+         <div class="colelem" id="u123"><!-- custom html -->
+          <div id="drugWeight" style="width:200px">
+{{ drugWeight }}
+ </div>
+
+
+</div>
+         <div class="colelem" id="u121"><!-- custom html -->
+           <div id="drugImage" >
+<span style="text-align:left; vertical-aling:top"><img ng-hide="!drugImgUrl" ng-src="{{ drugImgUrl }}" alt="分子構造イメージ"　width="302px"  height="202px" style="width: 302px; height: 202px;"></span>
+ </div>
+
+</div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="grpelem" id="u125"><!-- custom html -->
+      <div id="drugRef"   style="width:225px; height:270px; overflow-y:auto; overflow-x:auto;" >
+<ul ng-controller="DrugListController" >
+<li ng-model="drugRefModel" ng-repeat="drug in drugRefLists" ng-click='getData(drug.url);' style="cursor: pointer">{{ drug.item }}</li>
+</ul>
+</div>
+
+</div>
+     <img class="grpelem" id="u135-6" alt="こんなんに使われていそうやな！
+(クリックすると教えてくれるよ）" width="226" height="55" src="images/u135-6.png"/><!-- rasterized frame -->
      <div class="grpelem" id="u136"><!-- custom html -->
       <div id="itemAbstract">
 <span style="position:absolute; top:10px; font-size:28px; vertical-align:text-top" ng-model="itemName">{{ itemName }}</span>
